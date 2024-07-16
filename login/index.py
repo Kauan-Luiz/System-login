@@ -28,7 +28,7 @@ logoLabel.place(x=50, y=100)
 userLabel = Label(rightframe, text="Usuario:", bg="BLUE", fg="White")
 userLabel.place(x=40, y=100)
 
-passLabel = Label(rightframe,text="Senha:", bg="BLUE", fg="white")
+passLabel = Label(rightframe, text="Senha:", bg="BLUE", fg="white")
 passLabel.place (x=40, y=150)
 
 userEntry = Entry(rightframe, width=30)
@@ -44,9 +44,21 @@ loginButton.place(x=60, y=215)
 
 
 def register():
+    #removendo widgets de login   
     loginButton.place(x=601)
-    registerButton.place(x=601)
+    registerButton.place(x=601) 
+    #inserindo widgets de registro
+    nameLabel = Label(rightframe, text="Nome", bg="BLUE", fg="white")
+    nameLabel.place(x=40, y=50)
     
+    nameEntry = Entry(rightframe, width=20)
+    nameEntry.place(x=50, y=50)
+    
+    emailLabel = Label(rightframe, text="Email", bg="BLUE", fg="white")
+    emailLabel.place(x=40, y=250)
+    
+    emailEntry = Entry(rightframe, width=20)
+    emailEntry.place(x=50, y=250)   
 
 registerButton = ttk.Button(rightframe, text="Registro", width=20, command=register)
 registerButton.place(x=200, y=215)
