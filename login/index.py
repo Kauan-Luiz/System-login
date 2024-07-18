@@ -38,9 +38,23 @@ userEntry.place(x=120, y=100)
 passEntry = ttk.Entry(rightframe, width=30, show="●")
 passEntry.place(x=120, y=150)
 
+def login ():
+    user = userEntry.get()
+    password = passEntry.get()
+        
+    DataBaser.cursor.execute("""
+    SELECT * FROM Users
+    WHERE (User = ? and Passoword = ?)                             
+    """,(user, password))
+    
+    verifylogin = DataBaser.cursor.fetchone()
+    try:
+        if (user in verifylogin and password in verifylogin):
+            messagebox.showinfo(title="Login info", message="Seja Bem-vindo!")
+    except:
+        messagebox.showerror(title="Login info", message="Usuario ou senha incorreta!")
 #button
-
-loginButton = ttk.Button(rightframe, text="Login", width=20 )
+loginButton = ttk.Button(rightframe, text="Login", width=20, command=login)
 loginButton.place(x=60, y=215)
 
 
@@ -66,11 +80,15 @@ def register():
         email = emailEntry.get()
         user = userEntry.get()
         password = passEntry.get()
-        DataBaser.cursor.execute("""
-        INSERT INTO users(Name, Email, User, Passoword) VALUES(?, ?, ?, ?)                         
-        """, (name, email, user, password))
-        DataBaser.conn.commit()
-        messagebox.showinfo(title="informações de registro", message="Registrado com sucesso!")
+        
+        if (name == "" and email == "" and user == "" and password == ""):
+            messagebox.showerror(title="Erro de Registro", message="Preencha todos os campos.")            
+        else:     
+            DataBaser.cursor.execute("""
+            INSERT INTO users(Name, Email, User, Passoword) VALUES(?, ?, ?, ?)                         
+            """, (name, email, user, password))
+            DataBaser.conn.commit()
+            messagebox.showinfo(title="informações de registro", message="Registrado com sucesso!")
     
     register = ttk.Button(rightframe, text="Registrar-se", width=15, command=registerToDatabase)
     register.place(x=220, y=250)
