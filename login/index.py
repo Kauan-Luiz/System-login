@@ -9,7 +9,6 @@ window = Tk()
 window.title("System - Login") #Titulo da janela 
 window.geometry("600x300") #Tamanho da janela
 window.resizable(width=False, height=False) #Se pode mexer no tamanho da janela 
-window.attributes("-alpha", 0.9) #Deixando o fundo transparenet
 window.iconbitmap(default="login/logoicon.ico")
 
 #=============imagens==========
@@ -17,19 +16,19 @@ logo = PhotoImage (file="login/logo.png")
 
 
 
-leftframe = Frame(window, width=195, height=300, bg="BLUE") 
+leftframe = Frame(window, width=195, height=300, bg="#A9A9A9") 
 leftframe.pack(side=LEFT)
 
-rightframe = Frame(window, width=400, height=300, bg="BLUE")
+rightframe = Frame(window, width=400, height=300, bg="#E0FFFF")
 rightframe.pack(side=RIGHT)
 
-logoLabel = Label(leftframe, image=logo, bg="BLUE")
+logoLabel = Label(leftframe, image=logo, bg="#A9A9A9")
 logoLabel.place(x=50, y=100)
 
-userLabel = Label(rightframe, text="Usuario:", bg="BLUE", fg="White")
+userLabel = Label(rightframe, text="Usuario:", bg="#E0FFFF", fg="Black")
 userLabel.place(x=40, y=100)
 
-passLabel = Label(rightframe, text="Senha:", bg="BLUE", fg="white")
+passLabel = Label(rightframe, text="Senha:", bg="#E0FFFF", fg="Black")
 passLabel.place (x=40, y=150)
 
 userEntry = ttk.Entry(rightframe, width=30)
@@ -63,13 +62,13 @@ def register():
     loginButton.place(x=601)
     registerButton.place(x=601) 
     #inserindo widgets de registro
-    nameLabel = Label(rightframe, text="Nome", bg="BLUE", fg="white")
+    nameLabel = Label(rightframe, text="Nome", bg="#E0FFFF", fg="Black")
     nameLabel.place(x=40, y=50)
     
     nameEntry = ttk.Entry(rightframe, width=30)
     nameEntry.place(x=120, y=50)
     
-    emailLabel = Label(rightframe, text="Email", bg="BLUE", fg="white")
+    emailLabel = Label(rightframe, text="Email", bg="#E0FFFF", fg="Black")
     emailLabel.place(x=40, y=200)
     
     emailEntry = ttk.Entry(rightframe, width=30)
